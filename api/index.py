@@ -20,7 +20,7 @@ cognitive_chain = CognitiveChain()
 
 # Gemini API configuration - use environment variable if available
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
-API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyAuFi5KtPsMJI5IC8c5FjvYD5IbuBdwH_U")
+API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyAZAG4wnbcfKWJ_D4VyiJyf0Y3VgUESau8")
 
 @app.route('/')
 def index():
