@@ -1,0 +1,336 @@
+/* Main Styles for AI Cognitive Simulator */
+
+/* Brain Loader Animation */
+.brain-loader {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    animation: brain-pulse 1.5s ease-in-out infinite;
+    background: linear-gradient(45deg, #00a3ff, #6a00ff);
+}
+
+.brain-loader:before,
+.brain-loader:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00a3ff, #6a00ff);
+    animation: brain-pulse 1.5s ease-in-out infinite reverse;
+}
+
+.brain-loader:before {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 20px;
+    opacity: 0.7;
+}
+
+.brain-loader:after {
+    width: 35px;
+    height: 35px;
+    bottom: -5px;
+    right: -5px;
+    opacity: 0.5;
+}
+
+@keyframes brain-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+}
+
+/* Brain Region Styles */
+.brain-region {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: blur(5px);
+    transform: scale(1);
+}
+
+.brain-region:hover, 
+.brain-region.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3);
+}
+
+.brain-region.processing {
+    animation: brain-processing 1s ease-in-out infinite alternate;
+}
+
+@keyframes brain-processing {
+    0% {
+        filter: blur(2px);
+        opacity: 0.7;
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+        box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Module Result Styling */
+.module-result {
+    background-color: #2d3748;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+.module-result .module-header {
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.module-result .module-content {
+    padding: 1rem;
+    background-color: #1a202c;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.module-result.expanded .module-content {
+    max-height: 500px;
+}
+
+.module-result .module-emoji {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+}
+
+.module-result .module-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.module-result.expanded .module-arrow {
+    transform: rotate(180deg);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Brain Visualization Positioning */
+#brain-regions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Position each brain region - these will be fine-tuned with JS */
+#prefrontal_cortex-region {
+    top: 25%;
+    left: 20%;
+    width: 20%;
+    height: 20%;
+    background-color: rgba(74, 85, 104, 0.7);
+}
+
+#amygdala-region {
+    top: 45%;
+    left: 45%;
+    width: 12%;
+    height: 12%;
+    background-color: rgba(229, 62, 62, 0.7);
+}
+
+#hippocampus-region {
+    top: 55%;
+    left: 30%;
+    width: 15%;
+    height: 15%;
+    background-color: rgba(128, 90, 213, 0.7);
+}
+
+#thalamus-region {
+    top: 40%;
+    left: 40%;
+    width: 18%;
+    height: 18%;
+    background-color: rgba(49, 130, 206, 0.7);
+}
+
+#sensory_cortex-region {
+    top: 30%;
+    left: 70%;
+    width: 15%;
+    height: 15%;
+    background-color: rgba(56, 161, 105, 0.7);
+}
+
+#auditory_cortex-region {
+    top: 35%;
+    left: 75%;
+    width: 14%;
+    height: 14%;
+    background-color: rgba(221, 107, 32, 0.7);
+}
+
+#visual_cortex-region {
+    top: 15%;
+    left: 60%;
+    width: 16%;
+    height: 16%;
+    background-color: rgba(214, 158, 46, 0.7);
+}
+
+#motor_cortex-region {
+    top: 20%;
+    left: 40%;
+    width: 17%;
+    height: 17%;
+    background-color: rgba(49, 151, 149, 0.7);
+}
+
+#hypothalamus-region {
+    top: 50%;
+    left: 50%;
+    width: 10%;
+    height: 10%;
+    background-color: rgba(213, 63, 140, 0.7);
+}
+
+#cerebellum-region {
+    top: 65%;
+    left: 50%;
+    width: 20%;
+    height: 20%;
+    background-color: rgba(113, 128, 150, 0.7);
+}
+
+#brain_stem-region {
+    top: 75%;
+    left: 45%;
+    width: 12%;
+    height: 12%;
+    background-color: rgba(44, 82, 130, 0.7);
+}
+
+/* Pulse Animation for Active Region */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+}
+
+.brain-region.active-processing {
+    animation: pulse-glow 1s infinite ease-in-out;
+    z-index: 100;
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* Neural Connection Lines */
+.neural-connection {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform-origin: left center;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.neural-connection.active {
+    opacity: 1;
+    animation: pulse-line 1.5s infinite;
+}
+
+@keyframes pulse-line {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* Final Output Animation */
+#final-output {
+    position: relative;
+    overflow: hidden;
+}
+
+#final-output::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .brain-region {
+        transform: scale(0.8);
+    }
+    
+    .module-result .module-header {
+        padding: 0.5rem;
+    }
+    
+    .module-result .module-content {
+        padding: 0.75rem;
+    }
+}
+
