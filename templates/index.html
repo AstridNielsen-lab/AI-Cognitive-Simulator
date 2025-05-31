@@ -159,3 +159,164 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Neural Network Cognitive Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4 text-blue-400">Neural Network AI Cognitive Simulator</h1>
+            <p class="text-xl text-gray-300">Observe how an artificial neural network processes information through simulated brain regions</p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Input Section -->
+            <div class="w-full lg:w-1/3 bg-gray-800 rounded-xl p-6 shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Input Phrase</h2>
+                <form id="cognitive-form" class="space-y-4">
+                    <div>
+                        <label for="user-input" class="block text-gray-300 mb-2">Enter a phrase for cognitive processing:</label>
+                        <textarea id="user-input" name="user-input" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Enter a phrase or statement for the AI to analyze..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition duration-200 flex items-center justify-center">
+                        <span>Process Thought</span>
+                        <i class="fas fa-brain ml-2"></i>
+                    </button>
+                </form>
+
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-300">How It Works</h3>
+                    <p class="text-gray-300 mb-4">Your input is processed through 11 simulated brain regions, each analyzing different aspects of cognition.</p>
+                    
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">🧠</span>
+                            <span class="text-gray-300">Prefrontal Cortex: Decision making & planning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">😲</span>
+                            <span class="text-gray-300">Amygdala: Emotional processing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">📚</span>
+                            <span class="text-gray-300">Hippocampus: Memory & context</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">🔄</span>
+                            <span class="text-gray-300">Thalamus: Information relay</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">👐</span>
+                            <span class="text-gray-300">Sensory Cortex: Physical sensations</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">👂</span>
+                            <span class="text-gray-300">Auditory Cortex: Sound processing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">👁️</span>
+                            <span class="text-gray-300">Visual Cortex: Visual imagery</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">🏃</span>
+                            <span class="text-gray-300">Motor Cortex: Action planning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">🌡️</span>
+                            <span class="text-gray-300">Hypothalamus: Basic drives</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">⚖️</span>
+                            <span class="text-gray-300">Cerebellum: Coordination</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xl mr-2">⚡</span>
+                            <span class="text-gray-300">Brain Stem: Vital responses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Section -->
+            <div class="w-full lg:w-2/3 space-y-6">
+                <!-- Brain Visualization -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg relative min-h-[300px]">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Neural Network Visualization</h2>
+                    
+                    <div id="brain-visualization" class="flex justify-center items-center">
+                        <div class="brain-model relative">
+                            <!-- Brain image or interactive model will be here -->
+                            <img src="https://neurosciencenews.com/files/2023/06/brain-memory-neurosinces.jpg" alt="Brain Visualization" class="max-w-full h-auto rounded-lg opacity-60">
+                            
+                            <!-- Brain regions will be overlaid dynamically -->
+                            <div id="brain-regions" class="absolute inset-0">
+                                <!-- Regions will be added dynamically via JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="current-module-info" class="mt-4 hidden">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <h3 id="current-module-name" class="text-xl font-semibold text-blue-300 mb-2">Processing...</h3>
+                            <p id="current-module-description" class="text-gray-300 mb-2">Module description will appear here</p>
+                            <div class="w-full bg-gray-600 rounded-full h-2 mt-2">
+                                <div id="processing-progress" class="bg-blue-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Section -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Cognitive Processing Results</h2>
+                    
+                    <div id="results-container" class="hidden">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-blue-300 mb-2">Input Phrase</h3>
+                            <div id="result-input" class="bg-gray-700 p-4 rounded-lg text-white"></div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-blue-300 mb-2">Neural Processing Chain</h3>
+                            <div id="module-results" class="space-y-4">
+                                <!-- Module results will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-300 mb-2">Final Cognitive Output</h3>
+                            <div id="final-output" class="bg-blue-900 p-4 rounded-lg text-white border border-blue-700"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="loading-container" class="hidden text-center py-8">
+                        <div class="inline-block">
+                            <div class="brain-loader"></div>
+                        </div>
+                        <p class="mt-4 text-blue-300">Processing cognitive functions...</p>
+                    </div>
+                    
+                    <div id="initial-message" class="text-center py-12 text-gray-400">
+                        <i class="fas fa-brain text-5xl mb-4 text-gray-600"></i>
+                        <p>Enter a phrase above to see the AI cognitive processing in action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-12 py-6 bg-gray-800 text-center">
+        <p class="text-gray-400">Neural Network AI Cognitive Simulator &copy; 2025 | A Simulation of Brain Function</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
